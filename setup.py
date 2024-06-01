@@ -255,7 +255,7 @@ if sys.platform == "win32":
     vcpkg_triplet = os.environ.get("VCPKG_DEFAULT_TRIPLET", "x64-windows")
     msys2_mingw_root = os.environ.get("MSYS2_MINGW_ROOT", r"C:\msys64\mingw64")
 
-    include_dirs = ["include"]
+    include_dirs = ["include", '/opt/homebrew/Cellar/libsndfile/1.2.2/include', '/usr/local/include/libsndfile']
     library_dirs = []
     binary_dirs = []
 
@@ -305,7 +305,14 @@ elif sys.platform == "darwin":
     # arm64: /opt/homebrew/Cellar
     brew_packages_root = os.environ.get("BREW_PACKAGES_ROOT", "/usr/local/Cellar")
 
-    include_dirs = ["include"]
+    include_dirs = [
+        "include",
+        '/opt/homebrew/Cellar/libsndfile/1.2.2/include',
+        '/usr/local/include/libsndfile',
+        '/opt/homebrew/Cellar/portaudio/19.7.0/include',
+        '/opt/homebrew/Cellar/portmidi/2.0.4_1/include',
+        '/opt/homebrew/Cellar/liblo/0.32/include',
+        ]
     library_dirs = []
 
     for pkg, req in pkgs_3rdpary.items():
